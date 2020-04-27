@@ -7,40 +7,77 @@
         <link rel="stylesheet" href="style.css" />
         <title>Document</title>
     </head>
-    <body>
-        <nav class="menu">
-            <div class="menu__logo">
-                <img class="menu__logo-image" src="" alt="" />
-                <span class="menu__logo-name">Cube Ltd.</span>
+    <body class="page">
+        <header class="banner page__header">
+            <img src="" alt="" class="banner__image" />
+            <h1 class="banner__title banner__title--large">Slogan duży</h1>
+            <h2 class="banner__title banner__title--medium">Slogan mały</h2>
+            <button class="button banner__btn button--large">Wejdź</button>
+        </header>
+        <nav class="menu page__nav">
+            <div class="logo menu__logo">
+                <img src="" alt="" class="logo__image" />
+                <span class="logo__name">Nazwa firmy</span>
             </div>
-            <ul class="menu__item-list">
-                <li class="menu__item">
-                    <a class="menu__link" href="">
-                        <img class="menu__icon" src="" alt="" />
-                        link-1
-                    </a>
+            <ul class="menu__list">
+                <li class="menu__item menu__item--is-open">
+                    <a href="" class="menu__link">link</a>
                 </li>
                 <li class="menu__item">
-                    <a class="menu__link" href=""
-                        ><img class="menu__icon" src="" alt="" />link-2</a
-                    >
+                    <a href="" class="menu__link">link</a>
                 </li>
                 <li class="menu__item">
-                    <a class="menu__link" href=""
-                        ><img class="menu__icon" src="" alt="" />link-3</a
-                    >
+                    <a href="" class="menu__link">link</a>
                 </li>
                 <li class="menu__item">
-                    <a class="menu__link" href=""
-                        ><img class="menu__icon" src="" alt="" />link-4</a
-                    >
-                </li>
-                <li class="menu__item">
-                    <a class="menu__link" href=""
-                        ><img class="menu__icon" src="" alt="" />link-5</a
-                    >
+                    <a href="" class="menu__link">link</a>
                 </li>
             </ul>
         </nav>
+        <section class="articles page__articles">
+            <form class="search" action="/">
+                <input class="search__input" type="text" />
+                <button class="button search__btn button--italic" type="submit">
+                    Szukaj
+                </button>
+            </form>
+            <article class="article">
+                <h1 class="article__title">Tytuł artykułu</h1>
+                <div class="article__info">
+                    <span class="article__publication-date">2020-01-05</span>
+                    <span class="article__author">Frontec</span>
+                </div>
+                <p class="article__text">lorem...</p>
+                <p class="article__subtitle">śródtytuł</p>
+                <p class="article__text">lorem ipsum</p>
+                <button class="button article__btn">Czytaj więcej</button>
+            </article>
+            <article class="article">
+                <h1 class="article__title">Tytuł artykułu</h1>
+                <div class="article__info">
+                    <span class="article__publication-date">2020-01-05</span>
+                    <span class="article__author">Frontec</span>
+                </div>
+                <p class="article__text">lorem...</p>
+                <p class="article__subtitle">śródtytuł</p>
+                <p class="article__text">lorem ipsum</p>
+                <button class="button article__btn">Czytaj więcej</button>
+            </article>
+            <article class="article">
+                <h1 class="article__title">Tytuł artykułu</h1>
+                <div class="article__info">
+                    <span class="article__publication-date">2020-01-05</span>
+                    <span class="article__author">Frontec</span>
+                </div>
+                <p class="article__text">lorem...</p>
+                <p class="article__subtitle">śródtytuł</p>
+                <p class="article__text">lorem ipsum</p>
+                <button class="button article__btn">Czytaj więcej</button>
+            </article>
+        </section>
+        <footer class="footer page__footer">
+            <p class="footer__copyright">zastrzeżone</p>
+            <address class="footer__adress">Adres</address>
+        </footer>
     </body>
 </html>
