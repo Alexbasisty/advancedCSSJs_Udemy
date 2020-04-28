@@ -1,0 +1,19 @@
+.menu {
+    border: 2px solid #ccc;
+
+    &__list {
+        display: flex;
+        flex-direction: column;
+
+        &--horizontal {
+            flex-direction: row;
+        }
+    }
+
+    &__item {
+        background-color: #999;
+        &--is-open {
+            background-color: #333;
+        }
+    }
+}
