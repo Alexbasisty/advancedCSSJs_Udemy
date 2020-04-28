@@ -1,24 +1,5 @@
-$bg-main-color: grey;
+@import "variables";
 
-body {
-    margin: 10px;
-}
-
-header {
-    display: flex;
-    height: 300px;
-    background-color: $bg-main-color;
-
-    h1 {
-        font-size: 40px;
-        color: white;
-
-        strong {
-            color: red;
-        }
-    }
-
-    h2 {
-        font-size: 32px;
-    }
-}
+@import "reset";
+@import "base";
+@import "header";
