@@ -14,14 +14,55 @@ html {
     font-size: 10px;
     background-color: $main-color;
     font-family: $default-font;
+    color: #fff;
 }
 
 .wrapper {
     display: flex;
     flex-wrap: wrap;
+    flex-direction: row;
+    align-content: flex-start;
     font-size: 2rem;
     max-width: 1000px;
+    min-height: 100vh;
     background-color: #fff;
     margin: 0 auto;
     box-shadow: 0 0 4px 0 #000;
+}
+
+.logo {
+    flex-basis: 200px;
+    // height: 160px;
+    background-color: cadetblue;
+}
+
+.search {
+    background-color: cyan;
+    flex-grow: 1;
+}
+
+.settings {
+    background-color: rgb(170, 63, 63);
+    padding: 0 50px;
+}
+
+.menu {
+    flex-basis: 100%;
+    background-color: darkblue;
+}
+
+.main-articles {
+    flex-basis: 100%;
+    // min-height: 50vh;
+    background-color: rgb(13, 39, 9);
+}
+
+.articles-list {
+    flex-basis: 100%;
+    background-color: rgb(100, 84, 13);
+}
+
+.footer {
+    flex-basis: 100%;
+    background-color: rgb(190, 124, 24);
 }
