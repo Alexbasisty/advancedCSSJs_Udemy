@@ -1,5 +1,22 @@
+@import url("https://fonts.googleapis.com/css2?family=PT+Sans:wght@400;700&family=Roboto:wght@400;700&display=swap");
+
+$main-color: #8daae5;
+$default-font: arial, sans-serif;
+$special-font: "PT Sans", "Roboto", sans-serif;
+
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+}
+
+html {
+    font-size: 10px;
+    background-color: $main-color;
+    font-family: $default-font;
+}
+
+.wrapper {
+    display: flex;
+    font-size: 2rem;
 }
