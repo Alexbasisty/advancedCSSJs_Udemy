@@ -12,35 +12,59 @@ body {
         "images images images"
         "contact contact contact"
         "foot foot foot";
+
+    @media (min-width: 1024px) {
+        grid-template-columns: minmax(300px, auto) 1fr;
+        grid-template-rows: auto auto auto 1fr auto auto;
+        grid-template-areas:
+            "logotype images"
+            "hamburger images"
+            "search images"
+            ". images"
+            "contact images"
+            "foot foot";
+    }
+
     min-height: 100vh;
     max-width: 1240px;
     margin: 0 auto;
 }
 
 .logo {
-    grid-column-start: 1;
-    grid-column-end: 2;
-    grid-row-start: 1;
-    grid-row-end: 2;
+    // grid-column-start: 1;
+    // grid-column-end: 2;
+    // grid-row-start: 1;
+    // grid-row-end: 2;
+    grid-area: logotype;
     background-color: rgb(180, 166, 166);
     height: 100px;
 }
 
 .search {
-    grid-column: 2/3;
-    grid-row: 1/2;
+    // grid-column: 2/3;
+    // grid-row: 1/2;
+    grid-area: search;
     background-color: rgb(17, 84, 104);
+
+    @media (min-width: 1024px) {
+        min-height: 80px;
+    }
 }
 
 .menu {
-    grid-column: -1/-2;
-    grid-row: 1/2;
+    // grid-column: -1/-2;
+    // grid-row: 1/2;
+    grid-area: hamburger;
     background-color: rgb(85, 82, 102);
+    @media (min-width: 1024px) {
+        min-height: 80px;
+    }
 }
 
 .gallery {
-    grid-column: 1/-1;
-    grid-row: 2;
+    // grid-column: 1/-1;
+    // grid-row: 2;
+    grid-area: images;
     background-color: rgb(151, 149, 25);
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(205px, 1fr));
@@ -63,7 +87,8 @@ body {
 }
 
 .contact {
-    grid-area: 3/1/4/-1;
+    // grid-area: 3/1/4/-1;
+    grid-area: contact;
     background-color: rgb(21, 110, 55);
 }
 
