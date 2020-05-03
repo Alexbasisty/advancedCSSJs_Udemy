@@ -51,8 +51,23 @@ body {
     max-width: 1200px;
     margin: 0 auto;
 }
+.result {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 30px;
 
-footer {
+    &__number-info {
+        grid-column: 1/-1;
+        text-align: center;
+    }
+
+    &__element-info {
+        border: 2px solid gray;
+        padding: 10px;
+    }
+}
+
+.footer {
     background-color: #000;
     color: white;
     display: flex;

@@ -32,10 +32,10 @@ const searchElements = (e, element) => {
     infoElement.textContent = "";
     const elements = document.querySelectorAll(element);
     if (elements.length > 0) {
-        infoElement.innerHTML = `<p class="result__info">W tym dokumencie znalazłem <strong>${elements.length}</strong> elementów <strong>${element}</strong></p>`;
+        infoElement.innerHTML = `<p class="result__number-info">W tym dokumencie znalazłem <strong>${elements.length}</strong> elementów <strong>${element}</strong></p>`;
         showInfo(elements, infoElement);
     } else {
-        infoElement.innerHTML = `<p class="result__info">W tym dokumencie nie znalazłem elementów <strong>${element}</strong></p>`;
+        infoElement.innerHTML = `<p class="result__number-info">W tym dokumencie nie znalazłem elementów <strong>${element}</strong></p>`;
         return;
     }
 };
@@ -43,7 +43,7 @@ const searchElements = (e, element) => {
 const showInfo = (elements, infoElement) => {
     elements.forEach((el) => {
         const item = document.createElement("div");
-        item.className = "element-info";
+        item.className = "result__element-info";
         item.innerHTML = `
         <div>${el.nodeName}</div>
         <div>klasa/klasy: ${el.className}</div>
