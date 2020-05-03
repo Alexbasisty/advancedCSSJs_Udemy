@@ -3,10 +3,14 @@ const addForm = document.querySelector(".form--add");
 const addElement = (event, node, txt, attr, value) => {
     event.preventDefault();
     const element = document.createElement(node);
-    const text = document.createTextNode(txt);
-    element.appendChild(text);
-    element.setAttribute(attr, value);
-    document.body.appendChild(element);
+    if (txt) {
+        const text = document.createTextNode(txt);
+        element.appendChild(text);
+    }
+    if (attr) {
+        element.setAttribute(attr, value);
+    }
+    document.querySelector(".content").appendChild(element);
 };
 
 addForm.addEventListener("submit", (e) =>
