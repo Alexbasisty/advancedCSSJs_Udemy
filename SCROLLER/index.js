@@ -4,8 +4,16 @@ document.addEventListener("DOMContentLoaded", () => {
     const rootElement = document.getElementById("root");
     const sections = document.querySelectorAll("section");
     let currSectionIndex = 0;
+    let isThrottled = false;
 
     document.addEventListener("mousewheel", (event) => {
+        if (isThrottled) return;
+        isThrottled = true;
+
+        setTimeout(() => {
+            isThrottled = false;
+        }, 700);
+
         const direction = event.wheelDelta < 0 ? 1 : -1;
 
         if (direction === 1) {
@@ -18,6 +26,9 @@ document.addEventListener("DOMContentLoaded", () => {
 
         currSectionIndex = currSectionIndex + direction;
 
-        console.log(currSectionIndex);
+        sections[currSectionIndex].scrollIntoView({
+            behavior: "smooth",
+            block: "start",
+        });
     });
 });
