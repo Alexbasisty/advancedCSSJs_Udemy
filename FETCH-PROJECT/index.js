@@ -1,5 +1,14 @@
-const getUsers = () => {
-    const url = "https://randomuser.me/api/?results=10";
+const getUsers = (e) => {
+    e.preventDefault();
+
+    const usersNumber = document.querySelector('[(name = "users-number")]')
+        .value;
+    const usersGender = document.querySelector('[(name = "gender")]').value;
+
+    const url = `https://randomuser.me/api/?results=${usersNumber}&gender=${
+        usersGender === "both" ? "male,female" : usersGender
+    }`;
+
     fetch(url)
         .then((response) => {
             if (response.status !== 200) {
@@ -12,4 +21,4 @@ const getUsers = () => {
         .catch((err) => console.log(`Error: ${err}`));
 };
 
-document.querySelector("button").addEventListener("click", getUsers);
+document.querySelector(".generator").addEventListener("submit", getUsers);
