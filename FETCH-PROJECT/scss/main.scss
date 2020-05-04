@@ -1,0 +1,14 @@
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 22px;
+    max-width: 1200px;
+    margin: 50px auto;
+}
+
+.generator {
+    &__input,
+    &__select,
+    &__btn {
+        font-size: 22px;
+    }
+}
