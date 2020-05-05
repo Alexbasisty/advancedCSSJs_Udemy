@@ -10,12 +10,13 @@ class Scroller {
         if (this.isThrottled) return;
         this.isThrottled = true;
 
-        setTimeout(function () {
+        setTimeout(() => {
             this.isThrottled = false;
         }, 700);
 
         const direction = event.wheelDelta < 0 ? 1 : -1;
-        // scroll(direction);
+
+        this.scroll(direction);
     };
 
     scroll = (direction) => {
@@ -34,7 +35,7 @@ class Scroller {
         this.scrollToCurrSection();
     };
     scrollToCurrSection = () => {
-        sections[this.currSectionIndex].scrollIntoView({
+        this.sections[this.currSectionIndex].scrollIntoView({
             behavior: "smooth",
             block: "start",
         });
