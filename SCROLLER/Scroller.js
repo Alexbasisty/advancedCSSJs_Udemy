@@ -8,6 +8,7 @@ class Scroller {
         this.currSectionIndex = visibleSection < 0 ? 0 : visibleSection;
         // this.currSectionIndex = Math.max(visibleSection, 0)
         this.isThrottled = false;
+        this.drawNavigation();
     }
 
     isScrolledIntoView = (el) => {
@@ -55,5 +56,15 @@ class Scroller {
 
     drawNavigation = () => {
         this.navigationContainer = document.createElement("aside");
+        this.navigationContainer.classList.add("sroller__navigation");
+        const list = document.createElement("ul");
+
+        this.sections.forEach((section) => {
+            const listItem = document.createElement("li");
+            list.appendChild(listItem);
+        });
+
+        this.navigationContainer.appendChild(list);
+        document.body.prepend(this.navigationContainer);
     };
 }
