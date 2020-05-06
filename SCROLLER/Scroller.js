@@ -52,4 +52,8 @@ class Scroller {
             block: "start",
         });
     };
+
+    drawNavigation = () => {
+        this.navigationContainer = document.createElement("aside");
+    };
 }
