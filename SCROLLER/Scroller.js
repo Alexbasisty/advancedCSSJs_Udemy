@@ -56,7 +56,7 @@ class Scroller {
 
     drawNavigation = () => {
         this.navigationContainer = document.createElement("aside");
-        this.navigationContainer.classList.add("sroller__navigation");
+        this.navigationContainer.classList.add("scroller__navigation");
         const list = document.createElement("ul");
 
         this.sections.forEach((section) => {
