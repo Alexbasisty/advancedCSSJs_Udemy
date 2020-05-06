@@ -11,15 +11,15 @@ class Scroller {
         this.drawNavigation();
     }
 
-    isScrolledIntoView = (el) => {
+    isScrolledIntoView(el) {
         const rect = el.getBoundingClientRect();
         const elemTop = rect.top;
         const elemBottom = Math.floor(rect.bottom);
         const isVisible = elemTop >= 0 && elemBottom <= window.innerHeight;
         return isVisible;
-    };
+    }
 
-    listenScroll = (event) => {
+    listenScroll(event) {
         if (this.isThrottled) return;
         this.isThrottled = true;
 
@@ -27,13 +27,12 @@ class Scroller {
             this.isThrottled = false;
         }, 700);
 
-        const direction = event.wheelDelta < 0 ? 1 : -1;
+        const direction = event.deltaY > 0 ? 1 : -1;
 
         this.scroll(direction);
-    };
+    }
 
-    scroll = (direction) => {
-        console.log(direction);
+    scroll(direction) {
         if (direction === 1) {
             const isLastSection =
                 this.currSectionIndex === this.sections.length - 1;
@@ -46,17 +45,17 @@ class Scroller {
         this.currSectionIndex = this.currSectionIndex + direction;
 
         this.scrollToCurrSection();
-    };
+    }
 
-    scrollToCurrSection = () => {
+    scrollToCurrSection() {
         this.selectActivNavItem();
         this.sections[this.currSectionIndex].scrollIntoView({
             behavior: "smooth",
             block: "start",
         });
-    };
+    }
 
-    drawNavigation = () => {
+    drawNavigation() {
         this.navigationContainer = document.createElement("aside");
         this.navigationContainer.classList.add("scroller__navigation");
         const list = document.createElement("ul");
@@ -74,11 +73,10 @@ class Scroller {
         this.navigationContainer.appendChild(list);
         document.body.prepend(this.navigationContainer);
         this.selectActivNavItem();
-    };
+    }
 
-    selectActivNavItem = () => {
+    selectActivNavItem() {
         const navItems = this.navigationContainer?.querySelectorAll("li");
-        console.log(navItems);
         navItems.forEach((item, index) => {
             if (index === this.currSectionIndex) {
                 item.classList.add("active");
@@ -86,5 +84,5 @@ class Scroller {
                 item.classList.remove("active");
             }
         });
-    };
+    }
 }
