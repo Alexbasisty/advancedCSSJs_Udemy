@@ -15,6 +15,10 @@
                 background-color: rgba(57, 57, 160, 0.575);
                 cursor: pointer;
 
+                &.active {
+                    background-color: blue;
+                }
+
                 + li {
                     margin-top: 10px;
                 }

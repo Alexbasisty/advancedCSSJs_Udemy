@@ -47,7 +47,9 @@ class Scroller {
 
         this.scrollToCurrSection();
     };
+
     scrollToCurrSection = () => {
+        this.selectActivNavItem();
         this.sections[this.currSectionIndex].scrollIntoView({
             behavior: "smooth",
             block: "start",
@@ -59,12 +61,30 @@ class Scroller {
         this.navigationContainer.classList.add("scroller__navigation");
         const list = document.createElement("ul");
 
-        this.sections.forEach((section) => {
+        this.sections.forEach((section, index) => {
             const listItem = document.createElement("li");
+            listItem.addEventListener("click", () => {
+                this.currSectionIndex = index;
+                this.scrollToCurrSection();
+            });
+
             list.appendChild(listItem);
         });
 
         this.navigationContainer.appendChild(list);
         document.body.prepend(this.navigationContainer);
+        this.selectActivNavItem();
+    };
+
+    selectActivNavItem = () => {
+        const navItems = this.navigationContainer?.querySelectorAll("li");
+        console.log(navItems);
+        navItems.forEach((item, index) => {
+            if (index === this.currSectionIndex) {
+                item.classList.add("active");
+            } else {
+                item.classList.remove("active");
+            }
+        });
     };
 }
