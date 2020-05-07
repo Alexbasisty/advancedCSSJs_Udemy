@@ -1,0 +1,41 @@
+body {
+    margin: 0;
+}
+
+.balloon-animation {
+    position: relative;
+    background-color: #00e7ff;
+    height: 100vh;
+
+    .cloud {
+        position: absolute;
+        width: 20%;
+
+        &:nth-child(1) {
+            top: 20%;
+            left: 20%;
+        }
+        &:nth-child(2) {
+            left: 24%;
+        }
+        &:nth-child(3) {
+            top: 25%;
+            left: 33%;
+            z-index: 1;
+        }
+        &:nth-child(4) {
+            left: 60%;
+        }
+        &:nth-child(5) {
+            top: 25px;
+            z-index: 1;
+        }
+    }
+
+    .balloon {
+        position: absolute;
+        width: 15%;
+        top: 20%;
+        left: 50%;
+    }
+}
