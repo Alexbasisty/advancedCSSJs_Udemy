@@ -9,6 +9,7 @@ class Swiper {
         document.addEventListener("touchmove", (event) =>
             this.moveTouch(event)
         );
+
         this.events = {
             swipeUp: new Event("swipeUp"),
             swipeDown: new Event("swipeDown"),
@@ -19,20 +20,18 @@ class Swiper {
 
     startTouch(event) {
         event.preventDefault();
-
-        this.initialX = event.tooches[0].clientX;
-        this.initialY = event.tooches[0].clientY;
+        this.initialX = event.touches[0].clientX;
+        this.initialY = event.touches[0].clientY;
     }
 
     moveTouch(event) {
-        // if (!this.initialX || !this.initialY) {
-        //     return;
-        // }
-        const currX = event.tooches[0].clientX;
-        const currY = event.tooches[0].clientY;
+        if (!this.initialX || !this.initialY) return;
 
-        const diffX = this.initialX - currX;
-        const diffY = this.initialY - currY;
+        const currentX = event.touches[0].clientX;
+        const currentY = event.touches[0].clientY;
+
+        const diffX = this.initialX - currentX;
+        const diffY = this.initialY - currentY;
 
         if (Math.abs(diffX) > Math.abs(diffY)) {
             if (diffX > 0) {
@@ -47,6 +46,7 @@ class Swiper {
                 document.dispatchEvent(this.events.swipeDown);
             }
         }
+
         this.initialX = null;
         this.initialY = null;
     }
