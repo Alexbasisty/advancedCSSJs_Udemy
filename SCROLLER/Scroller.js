@@ -2,11 +2,10 @@ class Scroller {
     constructor(rootSelector) {
         const rootElement = document.querySelector(rootSelector);
         this.sections = document.querySelectorAll("section");
-        const visibleSection = [...this.sections].findIndex(
-            this.isScrolledIntoView
-        );
-        this.currSectionIndex = visibleSection < 0 ? 0 : visibleSection;
-        // this.currSectionIndex = Math.max(visibleSection, 0)
+        const sectionsArr = [...this.sections];
+        const currSectionIndex = sectionsArr.findIndex(this.isScrolledIntoView);
+
+        this.currSectionIndex = Math.max(currSectionIndex, 0);
         this.isThrottled = false;
         this.drawNavigation();
     }
