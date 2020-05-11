@@ -10,3 +10,18 @@ document.addEventListener("DOMContentLoaded", () => {
     };
     console.log(moveZeros([false, 1, 0, 1, 2, 0, 1, 3, "a"]));
 });
+
+// password validator
+
+function validate(password) {
+    // return (
+    //     /[A-Z]/.test(password) &&
+    //     /[a-z]/.test(password) &&
+    //     /[0-9]/.test(password) &&
+    //     password.length > 6
+    // );
+
+    return /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z\d]{6,}$/.test(password);
+}
+
+console.log(validate("aDdas41"));
