@@ -1,1 +1,1 @@
-const a = "zmienna 1";
+export const a = "zmienna 1";
