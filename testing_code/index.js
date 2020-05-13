@@ -26,17 +26,34 @@ function validate(password) {
 
 console.log(validate("aDdas41"));
 
-function solution(A) {
-    // write your code in JavaScript (Node.js 8.9.4)
-    const x = A.sort();
-    const y = x.filter((n, i) => n !== x[i + 1]);
-    let c = 1;
-    for (let i = 0; i < A.length; i++) {
-        for (let j = i; j < A.length; j++) {
-            A.splice(i);
-        }
-    }
-    return c;
+//a function that when given a URL as a string, parses out just the domain name and returns it as a string
+
+// function domainName(url) {
+//     //your code here
+//     const a = url.split(/[:/.]/g).filter((item) => item.length !== 0);
+//     if (
+//         (a[0] === "http" || a[0] === "www" || a[0] === "https") &&
+//         a[1] !== "www"
+//     ) {
+//         return a[1];
+//     } else if (a[0] !== "http" && a[0] !== "www" && a[0] !== "https") {
+//         return a[0];
+//     } else {
+//         return a[2];
+//     }
+// }
+
+// sec option
+
+function domainName(url) {
+    return url
+        .replace("http://", "")
+        .replace("https://", "")
+        .replace("www.", "")
+        .split(".")[0];
 }
 
-console.log(solution([7, 5, 2, 7, 2, 7, 4, 7]));
+console.log(domainName("http://github.com/carbonfive/raygun"));
+console.log(domainName("http://www.zombie-bites.com"));
+console.log(domainName("https://www.cnet.com"));
+console.log(domainName("https://youtube.com"));
