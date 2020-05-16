@@ -1,6 +1,7 @@
 const path = require("path");
 const { CleanWebpackPlugin } = require("clean-webpack-plugin");
 const HTMLWebpackPlugin = require("html-webpack-plugin");
+const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 
 module.exports = {
     mode: "development",
@@ -8,7 +9,7 @@ module.exports = {
         main: "./src/index.js",
     },
     output: {
-        filename: "[name]-[contenthash:6].js",
+        filename: "js/[name]-[contenthash:6].js",
         path: path.resolve(__dirname, "../", "build"),
     },
     module: {
@@ -18,8 +19,8 @@ module.exports = {
                 use: "raw-loader",
             },
             {
-                test: /\.css$/,
-                use: ["style-loader", "css-loader"],
+                test: /\.css$/i,
+                use: [MiniCssExtractPlugin.loader, "css-loader"],
             },
         ],
     },
@@ -33,6 +34,9 @@ module.exports = {
         new HTMLWebpackPlugin({
             title: "New Application",
             template: "src/templates/template.html",
+        }),
+        new MiniCssExtractPlugin({
+            filename: "css/[name]-[contenthash:6].css",
         }),
     ],
 };
