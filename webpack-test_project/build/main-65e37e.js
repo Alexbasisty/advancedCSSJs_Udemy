@@ -106,7 +106,7 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _mes
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, \"message\", function() { return message; });\n/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, \"messageDOM\", function() { return messageDOM; });\nconst message = (info) => console.log(info);\nconst messageDOM = (info) => (document.body.textContent = info);\n\nconst a = 444444;\n\n\n//# sourceURL=webpack:///./src/message.js?");
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, \"message\", function() { return message; });\n/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, \"messageDOM\", function() { return messageDOM; });\nconst message = (info) => console.log(info);\nconst messageDOM = (info) => {\n    document.querySelector(\"div\").textContent = info;\n};\n\nconst a = 44442353454;\n\n\n//# sourceURL=webpack:///./src/message.js?");
 
 /***/ }),
 
