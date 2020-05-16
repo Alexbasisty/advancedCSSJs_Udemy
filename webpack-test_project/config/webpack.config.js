@@ -19,6 +19,11 @@ module.exports = {
             },
         ],
     },
+    devServer: {
+        open: true,
+        contentBase: path.resolve(__dirname, "../", "public"),
+        port: 5001,
+    },
     plugins: [
         new CleanWebpackPlugin(),
         new HTMLWebpackPlugin({
