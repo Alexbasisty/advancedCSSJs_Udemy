@@ -18,5 +18,5 @@ module.exports = {
             },
         ],
     },
-    plugin: [new CleanWebpackPlugin()],
+    plugins: [new CleanWebpackPlugin()],
 };
