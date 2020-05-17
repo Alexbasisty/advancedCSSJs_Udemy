@@ -20,12 +20,16 @@ module.exports = {
                 use: "raw-loader",
             },
             {
-                test: /\.css$/i,
+                test: /\.css$/,
                 use: [MiniCssExtractPlugin.loader, "css-loader"],
             },
             {
-                test: /\.(sass|scss)$/i,
+                test: /\.(sass|scss)$/,
                 use: [MiniCssExtractPlugin.loader, "css-loader", "sass-loader"],
+            },
+            {
+                test: /\.(jpg|png|jpeg|gif|svg)$/,
+                use: "file-loader",
             },
         ],
     },
