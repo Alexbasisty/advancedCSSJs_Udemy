@@ -25,6 +25,10 @@ module.exports = {
                 test: /\.(sass|scss)$/,
                 use: ["style-loader", "css-loader", "sass-loader"],
             },
+            {
+                test: /\.(jpg|png|jpeg|gif|svg)$/,
+                use: "file-loader",
+            },
         ],
     },
     devServer: {

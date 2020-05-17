@@ -29,7 +29,11 @@ module.exports = {
             },
             {
                 test: /\.(jpg|png|jpeg|gif|svg)$/,
-                use: "file-loader",
+                loader: "file-loader",
+                options: {
+                    name: "[name]-[contenthash:6].[ext]",
+                    outputPath: "images",
+                },
             },
         ],
     },
@@ -40,7 +44,7 @@ module.exports = {
             template: "src/templates/template.html",
         }),
         new MiniCssExtractPlugin({
-            filename: "css/[name]-[contenthash:6].css",
+            filename: "[name]-[contenthash:6].css",
         }),
         new CopyPlugin([
             {
