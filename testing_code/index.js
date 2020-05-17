@@ -97,3 +97,46 @@ PaginationHelper.prototype.pageIndex = function (itemIndex) {
         ? Math.floor(itemIndex / this.itemsPerPage)
         : -1;
 };
+
+//Write a function that accepts a square matrix (N x N 2D array) and returns the determinant of the matrix.
+
+function determinant(m) {
+    let answer = 0;
+    if (m.length === 1) {
+        return m[0][0];
+    } else if (m.length === 2) {
+        return m[0][0] * m[1][1] - m[0][1] * m[1][0];
+    }
+    for (let i = 0; i < m.length; i++) {
+        answer +=
+            Math.pow(-1, i) * m[0][i] * determinant(deleteRowAndColumn(m, i));
+    }
+    return answer;
+}
+
+function deleteRowAndColumn(M, index) {
+    let temp = [];
+    for (let i = 0; i < M.length; i++) {
+        temp.push(M[i].slice(0));
+    }
+    temp.splice(0, 1);
+    for (let i = 0; i < temp.length; i++) {
+        temp[i].splice(index, 1);
+    }
+    return temp;
+}
+m1 = [
+    [1, 3],
+    [2, 5],
+];
+m2 = [
+    [2, 5, 3],
+    [1, -2, -1],
+    [1, 3, 4],
+];
+m3 = [[2]];
+console.log(determinant(m1));
+console.log(determinant(m2));
+console.log(determinant(m3));
+
+// *****************
