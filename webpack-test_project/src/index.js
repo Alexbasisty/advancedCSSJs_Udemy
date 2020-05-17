@@ -13,3 +13,5 @@ element1.addBgc("red");
 const element2 = new Creator();
 element2.addBgc("blue");
 const element3 = new Creator();
+element3.addBgc();
+element3.showColor();
