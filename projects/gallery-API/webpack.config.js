@@ -1,14 +1,11 @@
 const path = require("path");
 const webpack = require("webpack");
-const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 
-const env = process.env.NODE_ENV;
-
 module.exports = {
-  entry: "./app/index.js",
+  entry: "./js/app.js",
 
-  mode: env,
+  mode: "development",
 
   output: {
     path: path.resolve(__dirname, "dist"),
@@ -20,7 +17,7 @@ module.exports = {
     contentBase: path.join(__dirname, "public"),
     open: true,
     compress: true,
-    port: 3500,
+    port: 3000,
     hot: true,
   },
 
@@ -32,25 +29,14 @@ module.exports = {
         use: "babel-loader",
       },
       {
-        test: /\.(sa|sc|c)ss$/,
-        use: [
-          env == "development" ? "style-loader" : MiniCssExtractPlugin.loader,
-          "css-loader",
-          "postcss-loader",
-          "sass-loader",
-        ],
+        test: /\.(sa|sc)ss$/,
+        use: ["style-loader", "css-loader", "sass-loader"],
       },
     ],
   },
 
   plugins: [
-    new HtmlWebpackPlugin({ template: "./app/index.html" }),
+    new HtmlWebpackPlugin({ template: "./index.html" }),
     new webpack.HotModuleReplacementPlugin(),
-    new MiniCssExtractPlugin({
-      // Options similar to the same options in webpackOptions.output
-      // both options are optional
-      filename: "[name].css",
-      chunkFilename: "[id].css",
-    }),
   ],
 };
