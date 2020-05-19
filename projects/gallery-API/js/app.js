@@ -11,6 +11,13 @@ function getRandomImage() {
     .then((resp) => resp.json())
     .then((data) => data.message);
 }
+
+function getRandomImageByBreed(breed) {
+  return fetch(`https://dog.ceo/api/breed/${breed}/images/random`)
+    .then((resp) => resp.json())
+    .then((data) => data.message);
+}
+
 const imgTag = document.querySelector("img");
 
-getRandomImage().then((imgSrc) => imgTag.setAttribute("src", imgSrc));
+getRandomImageByBreed("boxer").then((src) => imgTag.setAttribute("src", src));
