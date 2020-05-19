@@ -1,23 +1,21 @@
 import "../sass/style.scss";
 
-function listBreeds() {
-  return fetch("https://dog.ceo/api/breeds/list/all")
+const Doggo = () => {
+  this.url = "https://dog.ceo/api/";
+};
+
+Doggo.prototype.listBreeds = () => {
+  return fetch(`${this.url}breeds/list/all`)
     .then((resp) => resp.json())
     .then((data) => data.message);
-}
-
-function getRandomImage() {
-  return fetch("https://dog.ceo/api/breeds/image/random")
+};
+Doggo.prototype.getRandomImage = () => {
+  return fetch(`${this.url}breeds/image/random`)
     .then((resp) => resp.json())
     .then((data) => data.message);
-}
-
-function getRandomImageByBreed(breed) {
-  return fetch(`https://dog.ceo/api/breed/${breed}/images/random`)
+};
+Doggo.prototype.getRandomImageByBreed = (breed) => {
+  return fetch(`${this.url}breed/${breed}/images/random`)
     .then((resp) => resp.json())
     .then((data) => data.message);
-}
-
-const imgTag = document.querySelector("img");
-
-getRandomImageByBreed("boxer").then((src) => imgTag.setAttribute("src", src));
+};
