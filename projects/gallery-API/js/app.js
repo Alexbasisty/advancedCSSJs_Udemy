@@ -5,6 +5,7 @@ function Doggo() {
   this.imgEl = document.querySelector(".featured-dog img");
   this.backgroundEL = document.querySelector(".featured-dog__background");
   this.tilesEl = document.querySelector(".tiles");
+  this.spinnerEl = document.querySelector(".spinner");
   this.init();
 }
 
@@ -57,9 +58,11 @@ Doggo.prototype.addBreed = function (breed, subBreed) {
   tileContent.classList.add("tiles__tile-content");
   tileContent.innerText = name;
   tileContent.addEventListener("click", () => {
+    this.showLoading();
     this.getRandomImageByBreed(type).then((src) => {
       this.imgEl.setAttribute("src", src);
       this.backgroundEL.style.background = `url(${src})`;
+      this.hideLoading();
     });
   });
   tile.appendChild(tileContent);
@@ -67,11 +70,20 @@ Doggo.prototype.addBreed = function (breed, subBreed) {
 };
 
 Doggo.prototype.init = function () {
+  this.showLoading();
   this.getRandomImage().then((src) => {
     this.imgEl.setAttribute("src", src);
     this.backgroundEL.style.background = `url(${src})`;
+    this.hideLoading();
   });
   this.showAllBreeds();
+};
+
+Doggo.prototype.showLoading = function () {
+  this.spinnerEl.classList.add("spinner--visible");
+};
+Doggo.prototype.hideLoading = function () {
+  this.spinnerEl.classList.remove("spinner--visible");
 };
 
 document.addEventListener("DOMContentLoaded", () => {
