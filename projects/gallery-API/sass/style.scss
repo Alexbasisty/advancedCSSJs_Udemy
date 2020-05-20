@@ -1,5 +1,4 @@
 @import "./reset";
-
-body {
-  background: yellow;
-}
+@import "./variables";
+@import "./base";
+@import "./featured-dog";
