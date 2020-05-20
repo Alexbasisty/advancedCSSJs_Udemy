@@ -26,4 +26,16 @@
     flex: 1;
     padding: 0 $main-spacing;
   }
+
+  &__background {
+    position: absolute;
+    top: 0;
+    left: 0;
+    padding: $main-spacing;
+    width: 110%;
+    height: 110%;
+    margin: -5%;
+    background-size: cover;
+    filter: blur(10px);
+  }
 }

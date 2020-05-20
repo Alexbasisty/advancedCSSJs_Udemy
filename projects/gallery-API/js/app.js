@@ -3,6 +3,7 @@ import "../sass/style.scss";
 function Doggo() {
   this.url = "https://dog.ceo/api/";
   this.imgEl = document.querySelector(".featured-dog img");
+  this.backgroundEL = document.querySelector(".featured-dog__background");
   this.init();
 }
 
@@ -24,7 +25,10 @@ Doggo.prototype.getRandomImageByBreed = function (breed) {
 };
 
 Doggo.prototype.init = function () {
-  this.getRandomImage().then((src) => this.imgEl.setAttribute("src", src));
+  this.getRandomImage().then((src) => {
+    this.imgEl.setAttribute("src", src);
+    this.backgroundEL.style.background = `url(${src})`;
+  });
   this.listBreeds().then((breeds) => console.log(breeds));
 };
 
