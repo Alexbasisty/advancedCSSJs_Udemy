@@ -41,6 +41,12 @@ Doggo.prototype.showAllBreeds = function () {
   });
 };
 
+Doggo.prototype.showImageWhenReady = function (image) {
+  this.imgEl.setAttribute("src", image);
+  this.backgroundEL.style.background = `url(${image})`;
+  this.hideLoading();
+};
+
 Doggo.prototype.addBreed = function (breed, subBreed) {
   let name;
   let type;
@@ -58,12 +64,11 @@ Doggo.prototype.addBreed = function (breed, subBreed) {
   tileContent.classList.add("tiles__tile-content");
   tileContent.innerText = name;
   tileContent.addEventListener("click", () => {
+    window.scrollTo(0, 0);
     this.showLoading();
-    this.getRandomImageByBreed(type).then((src) => {
-      this.imgEl.setAttribute("src", src);
-      this.backgroundEL.style.background = `url(${src})`;
-      this.hideLoading();
-    });
+    this.getRandomImageByBreed(type).then((img) =>
+      this.showImageWhenReady(img)
+    );
   });
   tile.appendChild(tileContent);
   this.tilesEl.appendChild(tile);
@@ -71,11 +76,7 @@ Doggo.prototype.addBreed = function (breed, subBreed) {
 
 Doggo.prototype.init = function () {
   this.showLoading();
-  this.getRandomImage().then((src) => {
-    this.imgEl.setAttribute("src", src);
-    this.backgroundEL.style.background = `url(${src})`;
-    this.hideLoading();
-  });
+  this.getRandomImage().then((img) => this.showImageWhenReady(img));
   this.showAllBreeds();
 };
 
@@ -89,31 +90,3 @@ Doggo.prototype.hideLoading = function () {
 document.addEventListener("DOMContentLoaded", () => {
   new Doggo();
 });
-// class Doggo {
-//   constructor() {
-//     this.url = "https://dog.ceo/api/";
-//     this.imgEl = document.querySelector(".featured-dog img");
-//     this.init();
-//   }
-//   listBreeds() {
-//     return fetch(`${this.url}breeds/list/all`)
-//       .then((resp) => resp.json())
-//       .then((data) => data.message);
-//   }
-
-//   getRandomImage() {
-//     return fetch(`${this.url}breeds/image/random`)
-//       .then((resp) => resp.json())
-//       .then((data) => data.message);
-//   }
-//   getRandomImageByBreed(breed) {
-//     return fetch(`${this.url}breed/${breed}/images/random`)
-//       .then((resp) => resp.json())
-//       .then((data) => data.message);
-//   }
-
-//   init() {
-//     this.getRandomImage().then((src) => this.imgEl.setAttribute("src", src));
-//     this.listBreeds().then((breeds) => console.log(breeds));
-//   }
-// }
