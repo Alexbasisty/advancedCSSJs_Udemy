@@ -5,10 +5,7 @@ document.addEventListener("DOMContentLoaded", () => {
   const img1El = document.querySelector(".slider__image-container--first img");
   const img2El = document.querySelector(".slider__image-container--second img");
   let drugging = false;
-  const imagesContainerLeftOffset = imagesContainerEl.offsetLeft;
-  const img1ContainerEl = document.querySelector(
-    ".slider__image-container--first"
-  );
+  let imagesContainerLeftOffset = imagesContainerEl.offsetLeft;
   const img2ContainerEl = document.querySelector(
     ".slider__image-container--second"
   );
@@ -50,6 +47,7 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   function adjustImageSize() {
+    imagesContainerLeftOffset = imagesContainerEl.offsetLeft;
     imagesContainerElWidth = imagesContainerEl.offsetWidth;
     img1El.style.width = imagesContainerElWidth + "px";
     img2El.style.width = imagesContainerElWidth + "px";
