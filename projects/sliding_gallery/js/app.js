@@ -35,13 +35,24 @@ document.addEventListener("DOMContentLoaded", () => {
     handleEl.addEventListener("mousedown", () => {
       drugging = true;
     });
-    window.addEventListener("mouseup", () => {
+    handleEl.addEventListener("mouseup", () => {
+      drugging = false;
+    });
+    handleEl.addEventListener("touchstart", () => {
+      drugging = true;
+    });
+    handleEl.addEventListener("touchend", () => {
       drugging = false;
     });
 
     window.addEventListener("mousemove", (event) => {
       if (drugging) {
         move(event.clientX);
+      }
+    });
+    window.addEventListener("touchmove", (event) => {
+      if (drugging) {
+        move(event.touches[0].clientX);
       }
     });
   }
