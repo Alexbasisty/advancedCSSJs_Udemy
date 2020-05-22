@@ -5,7 +5,7 @@
   "description": "Gallery, public api used",
   "main": "index.js",
   "scripts": {
-    "start": "webpack-dev-server --inline --progress --colors",
+    "start": "webpack-dev-server --inline --progress --colors --host 0.0.0.0",
     "build": "webpack"
   },
   "keywords": [
