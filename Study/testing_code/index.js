@@ -157,3 +157,92 @@ zeros(12) = 2
 # 12! = 479001600 --> 2 trailing zeros 
 
    */
+
+/*
+   find duplicates in transactions
+   */
+const tr1 = [
+  {
+    id: 3,
+    sourceAccount: "A",
+    targetAccount: "B",
+    amount: 100,
+    category: "eating_out",
+    time: "2018-03-02T10:34:30.000Z",
+  },
+  {
+    id: 1,
+    sourceAccount: "A",
+    targetAccount: "B",
+    amount: 100,
+    category: "eating_out",
+    time: "2018-03-02T10:33:00.000Z",
+  },
+  {
+    id: 6,
+    sourceAccount: "A",
+    targetAccount: "C",
+    amount: 250,
+    category: "other",
+    time: "2018-03-02T10:33:05.000Z",
+  },
+  {
+    id: 4,
+    sourceAccount: "A",
+    targetAccount: "B",
+    amount: 100,
+    category: "eating_out",
+    time: "2018-03-02T10:36:00.000Z",
+  },
+  {
+    id: 2,
+    sourceAccount: "A",
+    targetAccount: "B",
+    amount: 100,
+    category: "eating_out",
+    time: "2018-03-02T10:33:50.000Z",
+  },
+  {
+    id: 5,
+    sourceAccount: "A",
+    targetAccount: "C",
+    amount: 250,
+    category: "other",
+    time: "2018-03-02T10:33:00.000Z",
+  },
+];
+
+const findDuplicateTransactions = (transactions = []) => {
+  // Add your implementation here...
+  if (transactions.length === 0) {
+    return [];
+  }
+  let result = [];
+
+  for (let item of transactions) {
+    for (let checkingItem of transactions) {
+      if (
+        transactions.indexOf(item) !== transactions.indexOf(checkingItem) &&
+        item.sourceAccount === checkingItem.sourceAccount &&
+        item.targetAccount === checkingItem.targetAccount &&
+        item.amount === checkingItem.amount &&
+        item.category === checkingItem.category
+      ) {
+        if (result.indexOf(checkingItem) === -1) {
+          result.push(checkingItem);
+        }
+      }
+    }
+  }
+
+  return result;
+};
+console.log(findDuplicateTransactions(tr1));
+// {
+//   id: 3,
+//   sourceAccount: 'A',
+//   targetAccount: 'B',
+//   amount: 100,
+//   category: 'eating_out',
+//   time: '2018-03-02T10:34:30.000Z'
+// },
