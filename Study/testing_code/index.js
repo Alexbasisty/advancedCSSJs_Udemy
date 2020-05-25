@@ -211,38 +211,95 @@ const tr1 = [
     time: "2018-03-02T10:33:00.000Z",
   },
 ];
-
-const findDuplicateTransactions = (transactions = []) => {
+const tr2 = [
+  {
+    id: 3,
+    sourceAccount: "A",
+    targetAccount: "C",
+    amount: 100,
+    category: "eating_out",
+    time: "2018-03-02T10:34:30.000Z",
+  },
+  {
+    id: 1,
+    sourceAccount: "A",
+    targetAccount: "D",
+    amount: 100,
+    category: "eating_out",
+    time: "2018-03-02T10:33:00.000Z",
+  },
+  {
+    id: 6,
+    sourceAccount: "A",
+    targetAccount: "E",
+    amount: 250,
+    category: "eating_out",
+    time: "2018-03-02T10:33:05.000Z",
+  },
+  {
+    id: 4,
+    sourceAccount: "A",
+    targetAccount: "F",
+    amount: 100,
+    category: "eating_out",
+    time: "2018-03-02T10:36:00.000Z",
+  },
+  {
+    id: 2,
+    sourceAccount: "A",
+    targetAccount: "G",
+    amount: 100,
+    category: "eating_out",
+    time: "2018-03-02T10:33:50.000Z",
+  },
+  {
+    id: 5,
+    sourceAccount: "A",
+    targetAccount: "H",
+    amount: 250,
+    category: "eating_out",
+    time: "2018-03-02T10:33:00.000Z",
+  },
+];
+const findDuplicateTransactions = (input = []) => {
   // Add your implementation here...
-  if (transactions.length === 0) {
+  if (input.length === 0) {
     return [];
   }
-  let result = [];
 
-  for (let item of transactions) {
-    for (let checkingItem of transactions) {
-      if (
-        transactions.indexOf(item) !== transactions.indexOf(checkingItem) &&
-        item.sourceAccount === checkingItem.sourceAccount &&
-        item.targetAccount === checkingItem.targetAccount &&
-        item.amount === checkingItem.amount &&
-        item.category === checkingItem.category
-      ) {
-        if (result.indexOf(checkingItem) === -1) {
-          result.push(checkingItem);
-        }
+  const MILLIS_IN_MINUTE = 1000 * 60;
+
+  const hashedItems = {};
+
+  function itemToHash(item) {
+    return `${item.sourceAccount}#${item.targetAccount}#${item.category}#${item.amount}`;
+  }
+
+  input.sort((a, b) => {
+    const dateComp = new Date(a.time) - new Date(b.time);
+    return dateComp ? dateComp : a.id - b.id;
+  });
+
+  for (let i = 0; i < input.length; i++) {
+    const item = input[i];
+    const itemHash = itemToHash(item);
+    if (!hashedItems[itemHash]) {
+      hashedItems[itemHash] = [item];
+    } else {
+      const last = hashedItems[itemHash][hashedItems[itemHash].length - 1];
+      if (new Date(item.time) - new Date(last.time) <= MILLIS_IN_MINUTE) {
+        hashedItems[itemHash].push(item);
       }
     }
   }
-
+  let result = [];
+  for (let res of Object.values(hashedItems)) {
+    result.push(res);
+  }
+  if (input.length === result.length) {
+    result = [];
+  }
   return result;
 };
 console.log(findDuplicateTransactions(tr1));
-// {
-//   id: 3,
-//   sourceAccount: 'A',
-//   targetAccount: 'B',
-//   amount: 100,
-//   category: 'eating_out',
-//   time: '2018-03-02T10:34:30.000Z'
-// },
+console.log(findDuplicateTransactions(tr2));
