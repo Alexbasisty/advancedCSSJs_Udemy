@@ -29,12 +29,12 @@ module.exports = {
         use: "babel-loader",
       },
       {
-        test: /\.(sa|sc)ss$/,
+        test: /\.scss$/,
         use: ["style-loader", "css-loader", "sass-loader"],
       },
       {
         test: /\.(jpg|png)$/,
-        use: ["file-loader"],
+        use: "file-loader",
       },
     ],
   },
