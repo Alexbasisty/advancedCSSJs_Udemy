@@ -29,6 +29,14 @@ const valuesContainer = document.querySelector(".app--values");
 
 const desktopViewport = window.matchMedia("screen and (min-width: 500px)");
 
+const drawValues = (isDesktop) => {
+    if (isDesktop) {
+        drawDesktopValues();
+    } else {
+        drawMobileValues();
+    }
+};
+
 const drawMobileValues = () => {
     valuesContainer.innerHTML = "";
     const list = document.createElement("ul");
@@ -79,5 +87,8 @@ const drawDesktopValues = () => {
     valuesContainer.appendChild(table);
 };
 
-// drawDesktopValues();
-drawMobileValues();
+drawValues(desktopViewport.matches);
+
+desktopViewport.addListener((isDesktop) => {
+    drawValues(isDesktop.matches);
+});
