@@ -55,9 +55,6 @@ module.exports = {
         new HtmlWebpackPlugin({
             template: "src/templates/template.html",
             title: "nowa aplikacja",
-            minify: {
-                collapseWhitespace: true,
-            },
         }),
     ],
 };
