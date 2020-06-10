@@ -3,7 +3,17 @@
     <head>
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <title>Document</title>
+        <link rel="stylesheet" href="css/style.css" />
+        <title>Images</title>
     </head>
-    <body></body>
+    <body>
+        <h1>Użycie responsywnych obrazków - praktyka</h1>
+        <picture>
+            <source
+                media="(min-width:1280px)"
+                srcset="img/art_direction/nature.jpg"
+            />
+            <img src="img/art_direction/nature.jpg" alt="squirell" />
+        </picture>
+    </body>
 </html>
