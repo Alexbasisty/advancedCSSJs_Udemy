@@ -13,10 +13,36 @@ class Sky {
         this.ctx.fillStyle = "#000000";
         this.ctx.fillRect(0, 0, this.width, this.height);
     }
+    
+    drawStar(star) {
+        this.ctx.save();
+
+        this.ctx.fillStyle = star.color;
+
+        this.ctx.beginPath();
+
+        this.ctx.translate(star.x, star.y);
+        this.ctx.moveTo(0, 0 - star.radius);
+
+        for (let i = 0; i < 5; i++) {
+            this.ctx.rotate((Math.PI / 180) * 36);
+            this.ctx.lineTo(0, 0 - star.radius * 0.65);
+            this.ctx.rotate((Math.PI / 180) * 36);
+            this.ctx.lineTo(0, 0 - star.radius);
+        }
+
+        this.ctx.fill();
+        this.ctx.restore();
+    }
+
+    draw() {
+        console.log("draw");
+        window.requestAnimationFrame(() => this.draw());
+    }
 
     run() {
         this.initCanvas();
-    }
+        this.draw();
 }
 
 const sky = new Sky(document.querySelector("#canvas"));
