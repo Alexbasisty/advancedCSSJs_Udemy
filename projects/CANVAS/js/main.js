@@ -4,6 +4,13 @@ class Sky {
         this.ctx = canvas.getContext("2d");
         this.width = window.innerWidth;
         this.height = window.innerHeight;
+        this.lastConstellation = 0;
+        this.nextConstellation = Math.random() * 3000;
+        this.constellation = {
+            stars: [],
+            isClosed: false,
+            width: null,
+        };
     }
 
     initCanvas() {
@@ -51,9 +58,12 @@ class Sky {
     }
 
     generateRandomConstellation() {
-        const x = this.width / 2 + Math.random() * this.width - this.width / 2;
+        const x =
+            this.width / 2 + Math.random() * 0.8 * this.width - this.width / 2;
         const y =
-            this.height / 2 + Math.random() * this.height - this.height / 2;
+            this.height / 2 +
+            Math.random() * 0.8 * this.height -
+            this.height / 2;
         const radius = (this.height / 2) * Math.random() * 0.5 + 0.5;
 
         this.constellation = {
@@ -68,11 +78,20 @@ class Sky {
                 })
                 .slice(0, Math.round(Math.random() * 8 + 3)),
             isClosed: Math.random() > 0.5,
+            width: 5,
         };
     }
 
+    updateConstellation() {
+        if (this.constellation.width > 0) {
+            this.constellation.width -= 0.03;
+        } else {
+            this.constellation.width = 0;
+        }
+    }
+
     drawConstellation() {
-        const { stars, isClosed } = this.constellation;
+        const { stars, isClosed, width } = this.constellation;
         const starsCount = stars.length;
 
         if (starsCount > 2) {
@@ -93,6 +112,7 @@ class Sky {
             }
 
             this.ctx.strokeStyle = "#f7eada";
+            this.ctx.lineWidth = width;
             this.ctx.stroke();
         }
     }
@@ -140,20 +160,29 @@ class Sky {
         this.ctx.restore();
     }
 
-    draw() {
+    draw(now) {
         this.clearCanvas();
         this.drawStars();
+
         this.updateStars();
+
         this.drawConstellation();
+        this.updateConstellation();
 
         this.drawOverLayer();
-        window.requestAnimationFrame(() => this.draw());
+
+        if (now - this.lastConstellation > this.nextConstellation) {
+            this.lastConstellation = now;
+            this.nextConstellation = Math.random() * 1000 + 2000;
+            this.generateRandomConstellation();
+        }
+
+        window.requestAnimationFrame((now) => this.draw(now));
     }
 
     run() {
         this.initCanvas();
         this.generateStars(500);
-        this.generateRandomConstellation();
         this.draw();
     }
 }
