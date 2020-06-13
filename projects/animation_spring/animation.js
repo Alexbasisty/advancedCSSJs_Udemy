@@ -4,7 +4,10 @@ const ball = document.querySelector(".ball"),
     fill = document.querySelector(".fill");
 
 const stretchSpring = () => {
-    console.log("naciągamy");
+    fill.style.animationPlayState = "running";
+    spring.style.animationPlayState = "running";
+
+    btn.textContent = "Puść sprężynę";
 };
 
 const releaseSpring = () => {
