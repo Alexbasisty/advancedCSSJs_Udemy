@@ -43,3 +43,43 @@ const timer = () => {
 
 timer();
 counter();
+
+/*
+spinner v3
+*/
+
+const spinnerRAF = document.querySelector(".v3");
+
+let degRAF = 0;
+const degChangeRAF = 6;
+
+const rotateRAF = () => {
+    degRAF += degChangeRAF;
+    spinnerRAF.style.transform = `rotate(${degRAF}deg)`;
+
+    requestAnimationFrame(rotateRAF);
+};
+
+rotateRAF();
+
+/*
+spinner v4
+*/
+
+const spinnerRAF2 = document.querySelector(".v4");
+
+let degRAF2 = 0;
+const degChangeRAF2 = 6;
+let time2 = performance.now();
+
+const rotateRAF2 = (currentT) => {
+    if (currentT - time2 > 16) {
+        time2 = currentT;
+        degRAF2 += degChangeRAF2;
+        spinnerRAF2.style.transform = `rotate(${degRAF2}deg)`;
+    }
+
+    requestAnimationFrame(rotateRAF2);
+};
+
+rotateRAF2();
