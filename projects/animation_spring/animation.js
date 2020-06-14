@@ -11,7 +11,16 @@ const stretchSpring = () => {
 };
 
 const releaseSpring = () => {
-    console.log("puszczamy");
+    const fillStyle = getComputedStyle(fill);
+    const fillWidth = parseInt(fillStyle.width, 10);
+    const barWidth = parseInt(
+        getComputedStyle(document.querySelector(".bar")).width,
+        10
+    );
+    const powerPercent = (fillWidth / barWidth).toFixed(2);
+
+    btn.style.color = "black";
+    btn.textContent = `Moc uderżenia to ${powerPercent * 100}%`;
 };
 
 const resetAnimation = () => {
