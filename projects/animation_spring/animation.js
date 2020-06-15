@@ -4,6 +4,7 @@ const ball = document.querySelector(".ball"),
     fill = document.querySelector(".fill");
 
 const stretchSpring = () => {
+    fill.style.animationName = "fill";
     fill.style.animationPlayState = "running";
     spring.style.animationPlayState = "running";
 
@@ -44,10 +45,29 @@ const releaseSpring = () => {
 
     btn.removeEventListener("mouseup", stretchSpring);
     btn.removeEventListener("touchend", stretchSpring);
+
+    ball.addEventListener("animationend", resetAnimation);
 };
 
 const resetAnimation = () => {
     console.log("reset animation");
+    ball.removeEventListener("animationend", resetAnimation);
+
+    // reset
+
+    setTimeout(() => {
+        btn.addEventListener("mousedown", stretchSpring);
+        btn.addEventListener("mouseup", releaseSpring);
+        btn.addEventListener("touchstart", stretchSpring);
+        btn.addEventListener("touchend", releaseSpring);
+
+        btn.style.color = "white";
+        btn.textContent = "Naciągnij sprzężynę";
+
+        spring.style.animation = "";
+        ball.style.animation = "";
+        fill.style.animationName = "none";
+    }, 2000);
 };
 
 btn.addEventListener("mousedown", stretchSpring);
