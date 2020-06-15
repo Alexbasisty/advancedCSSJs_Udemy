@@ -123,9 +123,9 @@ body {
 }
 
 @keyframes fly-ball-x {
-    100% {
-        left: var(--power-x, 1000px);
-    }
+    // 100% {
+    //     left: var(--power-x, 1000px);
+    // }
 }
 
 @keyframes fly-ball-y {

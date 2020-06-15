@@ -47,10 +47,17 @@ const releaseSpring = () => {
     btn.removeEventListener("touchend", stretchSpring);
 
     ball.addEventListener("animationend", resetAnimation);
+
+    const myRules = document.styleSheets[0].cssRules;
+
+    for (const i of myRules) {
+        if (i.name === "fly-ball-x") {
+            i.appendRule(`100% {left: ${30 + powerPercent * 60}%}`);
+        }
+    }
 };
 
 const resetAnimation = () => {
-    console.log("reset animation");
     ball.removeEventListener("animationend", resetAnimation);
 
     // reset
