@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>GSAP 4 - Stagger2</title>
+        <style>
+            div {
+                position: absolute;
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%, -50%);
+                font-family: tahoma;
+                font-size: 80px;
+                font-weight: bold;
+                letter-spacing: 2px;
+                opacity: 0;
+            }
+        </style>
+    </head>
+    <body>
+        <div>W</div>
+        <div>ŻYCIU</div>
+        <div>WAŻNE</div>
+        <div>SĄ</div>
+        <div>NIE</div>
+        <div>TYLKO</div>
+        <div>CHWILE</div>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.3.3/gsap.min.js"></script>
+        <script>
+            const elements = document.querySelectorAll("div");
+            const colors = () => {
+                const colorsList = ["red", "blue", "green", "yellow"];
+                const color =
+                    colorsList[Math.floor(Math.random() * colorsList.length)];
+
+                return color;
+            };
+            TweenMax.staggerTo(
+                elements,
+                0.5,
+                { opacity: 1, color: colors, ease: "none" },
+                1
+            );
+            TweenMax.staggerTo(elements, 0.2, { opacity: 0, delay: 1 }, 1);
+        </script>
+    </body>
+</html>
